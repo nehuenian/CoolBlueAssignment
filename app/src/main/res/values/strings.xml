@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CoolBlueAssignment</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Product Item Strings -->
+    <string name="product_item_lbl_reviews">reviews</string>
+    <string name="product_item_lbl_delivery_tomorrow">Delivered tomorrow</string>
+    <plurals name="product_item_number_of_reviews">
+        <item quantity="one">%1$d review</item>
+        <item quantity="other">%1$d reviews</item>
+    </plurals>
+    <plurals name="product_item_available">
+        <item quantity="one">Available for pickup in %1$d store</item>
+        <item quantity="other">Available for pickup in %1$d stores</item>
+    </plurals>
+    <string name="product_item_not_available">Temporarily sold out</string>
+
+    <!-- Product Search List Strings -->
+    <string name="no_products_to_show">There are no products matching your search. Try searching with another term!</string>
+
+    <!-- Generic Error Screen Strings -->
+    <string name="generic_error">Sorry, something wen\'t wrong.</string>
+    <string name="generic_error_button">Try again</string>
+
+    <!-- Placeholder Strings -->
+    <string name="placeholder_product_name">Apple iPhone X 256GB Zilver</string>
+    <string name="placeholder_product_price">1259.99</string>
+    <string name="placeholder_product_number_of_reviews">24 reviews</string>
+    <string name="placeholder_product_availability">Available for pickup in 2 stores</string>
+
+</resources>
