@@ -6,7 +6,7 @@ data class Product(
     val reviewInformation: ReviewInformation,
     val usps: List<String>,
     val numberOfStoresAvailable: Int,
-    val salesPriceIncVat: Int,
+    val salesPriceIncVat: Double,
     val imageUrl: String,
     val hasNextDayDelivery: Boolean,
 )

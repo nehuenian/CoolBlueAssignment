@@ -1,7 +1,8 @@
-package com.example.coolblueassignment.presentation.ui
+package com.example.coolblueassignment.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -39,9 +40,23 @@ class ProductsAdapter :
                     getProductReviewsCounterText(productItem.reviewsCounter)
                 Glide.with(itemView)
                     .load(productItem.imageUrl)
-                    .centerCrop()
+                    .centerInside()
                     .placeholder(R.drawable.placeholder_product_image)
                     .into(productImage)
+
+                uspList.isVisible = productItem.usps.isNotEmpty()
+                uspList.removeAllViews()
+                productItem.usps.take(MAX_NUMBER_OF_USP_ITEMS).forEach { usp ->
+                    uspList.addView(
+                        getUspItemTextView(usp)
+                    )
+                }
+            }
+        }
+
+        private fun getUspItemTextView(usp: String): TextView {
+            return TextView(itemView.context).apply {
+                text = itemView.context.getString(R.string.product_item_usp_item, usp)
             }
         }
 
@@ -75,6 +90,8 @@ class ProductsAdapter :
                     )
                 )
             }
+
+            private const val MAX_NUMBER_OF_USP_ITEMS = 5
         }
     }
 

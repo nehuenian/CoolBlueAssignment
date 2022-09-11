@@ -12,7 +12,7 @@ data class ProductsResponseDTO(
     val pageSize: Int,
     @Json(name = "totalResults")
     val totalResults: Int,
-    @Json(name = "totalResults")
+    @Json(name = "pageCount")
     val pageCount: Int,
 )
 

@@ -15,7 +15,7 @@ data class ProductDTO(
     @Json(name = "availabilityState")
     val availabilityState: Int,
     @Json(name = "salesPriceIncVat")
-    val salesPriceIncVat: Int,
+    val salesPriceIncVat: Double,
     @Json(name = "productImage")
     val productImage: String,
     @Json(name = "nextDayDelivery")

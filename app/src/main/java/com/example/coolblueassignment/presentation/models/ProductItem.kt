@@ -9,7 +9,7 @@ data class ProductItem(
     val reviewsCounter: Int,
     val usps: List<String>,
     val numberOfStoresAvailable: Int,
-    val price: Int,
+    val price: Double,
     val imageUrl: String,
     val hasNextDayDelivery: Boolean,
 ) {

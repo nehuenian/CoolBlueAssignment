@@ -1,4 +1,4 @@
-package com.example.coolblueassignment.framework.data.paging
+package com.example.coolblueassignment.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

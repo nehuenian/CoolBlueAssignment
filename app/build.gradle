@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file("my.keystore")
+            storePassword "store_password"
+            keyAlias "my_key_alias"
+            keyPassword "key_password"
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -22,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -39,37 +48,44 @@ android {
 dependencies {
     implementation project(':core')
 
-    implementation "androidx.core:core-ktx:1.8.0"
-    implementation "androidx.appcompat:appcompat:1.5.0"
-    implementation "com.google.android.material:material:1.6.1"
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion"
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test.ext:junit:1.1.3"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    // Core
+    implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "androidx.multidex:multidex:$multidexVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
 
-    //fragment
-    implementation "androidx.fragment:fragment-ktx:1.5.2"
+    // Layouts
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion"
+
+    // Unit Testing
+    testImplementation "junit:junit:$junitVersion"
+
+    // Automation Testing
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
 
     // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
 
     // Moshi
-    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
-    implementation "com.squareup.moshi:moshi:1.13.0"
-    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
 
     //Paging
-    implementation "androidx.paging:paging-runtime:3.1.1"
-    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+    implementation "androidx.paging:paging-runtime:$pagingVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
 
     //Dagger-Hilt
-    implementation "com.google.dagger:hilt-android:2.40.5"
-    kapt "com.google.dagger:hilt-compiler:2.40.5"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$daggerHiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltViewModelVersion"
+    kapt "androidx.hilt:hilt-compiler:$androidxHiltVersion"
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 }

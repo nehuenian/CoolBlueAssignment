@@ -1,17 +1,19 @@
 package com.example.coolblueassignment.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.coolblueassignment.framework.data.paging.ProductsPagingSource
+import androidx.paging.cachedIn
+import com.example.coolblueassignment.presentation.paging.ProductsPagingSource
 import com.example.coolblueassignment.presentation.models.ProductItem
 import com.example.coolblueassignment.usecases.SearchProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.transformLatest
+import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,14 +24,16 @@ class ProductSearchViewModel @Inject constructor(
 
     @ExperimentalCoroutinesApi
     val productListResultStream: Flow<PagingData<ProductItem>> =
-        query.transformLatest { latestQuery ->
+        query.flatMapLatest { latestQuery ->
             Pager(
                 config = PagingConfig(pageSize = 20),
                 pagingSourceFactory = { ProductsPagingSource(searchProducts, latestQuery) }
-            ).flow
+            ).flow.cachedIn(viewModelScope)
         }
 
     fun updateSearchQuery(newQuery: String) {
-        query.value = newQuery
+        if (newQuery != query.value) {
+            query.value = newQuery
+        }
     }
 }

@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.example.coolblueassignment.R
 import com.example.coolblueassignment.databinding.FragmentProductSearchListBinding
 import com.example.coolblueassignment.presentation.models.ProductItem
+import com.example.coolblueassignment.presentation.ui.adapters.ProductsAdapter
 import com.example.coolblueassignment.presentation.viewmodel.ProductSearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,7 +24,7 @@ class ProductsFragment : Fragment(R.layout.fragment_product_search_list) {
     private var _binding: FragmentProductSearchListBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProductSearchViewModel by viewModels()
+    private val viewModel: ProductSearchViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,7 +47,7 @@ class ProductsFragment : Fragment(R.layout.fragment_product_search_list) {
             productList.adapter = adapter
 
             swipeRefreshLayout.setOnRefreshListener {
-                adapter.retry()
+                adapter.refresh()
                 swipeRefreshLayout.isRefreshing = false
             }
             genericError.genericErrorTryAgain.setOnClickListener {

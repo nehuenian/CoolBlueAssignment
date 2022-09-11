@@ -32,10 +32,10 @@ class ProductsActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         viewModel.updateSearchQuery(query.orEmpty())
-        return true
+        return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        return false
+        return true
     }
 }
