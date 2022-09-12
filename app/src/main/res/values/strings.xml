@@ -17,6 +17,7 @@
     <string name="product_item_usp_item">&#8226; %1$s</string>
 
     <!-- Product Search List Strings -->
+    <string name="product_search_hint">What are you looking for?</string>
     <string name="no_products_to_show">There are no products matching your search. Try searching with another term!</string>
 
     <!-- Generic Error Screen Strings -->

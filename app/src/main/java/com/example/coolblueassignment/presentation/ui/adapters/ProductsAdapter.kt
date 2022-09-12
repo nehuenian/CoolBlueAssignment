@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.coolblueassignment.R
 import com.example.coolblueassignment.databinding.ProductItemBinding
 import com.example.coolblueassignment.presentation.models.ProductItem
+import com.example.coolblueassignment.presentation.util.toFiveStarsOverFloat
 
 class ProductsAdapter :
     PagingDataAdapter<ProductItem, ProductsAdapter.ProductViewHolder>(ProductItemDiffCallback) {
@@ -32,7 +33,7 @@ class ProductsAdapter :
             binding.run {
                 productName.text = productItem.name
                 productPrice.text = productItem.price.toString()
-                productRating.rating = productItem.averageReview.toFloat() / 2F
+                productRating.rating = productItem.averageReview.toFiveStarsOverFloat()
                 productDeliveryTomorrow.isVisible = productItem.hasNextDayDelivery
                 productAvailability.text =
                     getProductAvailabilityText(productItem.numberOfStoresAvailable)

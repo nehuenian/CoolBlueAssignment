@@ -20,6 +20,6 @@ fun ProductsResponseDTO.toDomainEntity(): ProductsPage {
     return ProductsPage(
         products = products.map { it.toDomainEntity() },
         currentPage = currentPage,
-        finalPage = pageCount,
+        lastPage = pageCount,
     )
 }

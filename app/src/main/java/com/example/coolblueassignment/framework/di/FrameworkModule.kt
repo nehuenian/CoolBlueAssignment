@@ -1,8 +1,6 @@
 package com.example.coolblueassignment.framework.di
 
-import com.example.coolblueassignment.data.ProductRepository
 import com.example.coolblueassignment.framework.api.ProductAPI
-import com.example.coolblueassignment.framework.data.ProductRepositoryImpl
 import com.example.coolblueassignment.framework.data.source.ProductDataSource
 import com.example.coolblueassignment.framework.data.source.RemoteProductDataSourceImpl
 import com.squareup.moshi.Moshi
@@ -37,11 +35,5 @@ object FrameworkModule {
     @Singleton
     fun provideLocalProductDataSource(productAPI: ProductAPI): ProductDataSource {
         return RemoteProductDataSourceImpl(productAPI)
-    }
-
-    @Provides
-    @Singleton
-    fun provideProductRepository(productDataSource: ProductDataSource): ProductRepository {
-        return ProductRepositoryImpl(productDataSource)
     }
 }

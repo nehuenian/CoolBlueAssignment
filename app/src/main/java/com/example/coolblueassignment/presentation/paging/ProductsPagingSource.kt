@@ -45,7 +45,7 @@ class ProductsPagingSource(
         productsPage: ProductsPage
     ): Int? {
         return productsPage.currentPage.plus(ONE_POSITION).takeIf { nextPageKey ->
-            nextPageKey <= productsPage.finalPage
+            nextPageKey <= productsPage.lastPage
         }
     }
 
