@@ -1,7 +1,7 @@
 package com.example.coolblueassignment.presentation.paging
 
 import androidx.paging.PagingSource
-import com.example.coolblueassignment.presentation.models.ProductItem
+import com.example.coolblueassignment.presentation.ui.adapters.models.ProductItem
 import com.example.coolblueassignment.testutil.*
 import com.example.coolblueassignment.usecases.SearchProductsUseCase
 import kotlinx.coroutines.runBlocking

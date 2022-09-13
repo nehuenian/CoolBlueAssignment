@@ -7,7 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.coolblueassignment.presentation.paging.ProductsPagingSource
-import com.example.coolblueassignment.presentation.models.ProductItem
+import com.example.coolblueassignment.presentation.ui.adapters.models.ProductListItem
 import com.example.coolblueassignment.usecases.SearchProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,10 +23,10 @@ class ProductSearchViewModel @Inject constructor(
     private val query = MutableStateFlow("")
 
     @ExperimentalCoroutinesApi
-    val productListResultStream: Flow<PagingData<ProductItem>> =
+    val productListResultStream: Flow<PagingData<ProductListItem>> =
         query.flatMapLatest { latestQuery ->
             Pager(
-                config = PagingConfig(pageSize = 20),
+                config = PagingConfig(pageSize = 20, enablePlaceholders = false),
                 pagingSourceFactory = { ProductsPagingSource(searchProducts, latestQuery) }
             ).flow.cachedIn(viewModelScope)
         }

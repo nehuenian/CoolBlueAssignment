@@ -10,8 +10,8 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.example.coolblueassignment.R
 import com.example.coolblueassignment.databinding.FragmentProductSearchListBinding
-import com.example.coolblueassignment.presentation.models.ProductItem
 import com.example.coolblueassignment.presentation.ui.adapters.ProductsAdapter
+import com.example.coolblueassignment.presentation.ui.adapters.models.ProductListItem
 import com.example.coolblueassignment.presentation.viewmodel.ProductSearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -56,7 +56,7 @@ class ProductsFragment : Fragment(R.layout.fragment_product_search_list) {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.productListResultStream.collectLatest { value: PagingData<ProductItem> ->
+            viewModel.productListResultStream.collectLatest { value: PagingData<ProductListItem> ->
                 adapter.submitData(value)
             }
         }

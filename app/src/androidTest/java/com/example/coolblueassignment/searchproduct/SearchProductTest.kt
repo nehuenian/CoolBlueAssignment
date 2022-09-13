@@ -17,7 +17,7 @@ import com.example.coolblueassignment.data.TestProductRepository
 import com.example.coolblueassignment.espressoutils.verifyItemAtPositionWithValue
 import com.example.coolblueassignment.espressoutils.verifyItemIsVisibleAtPosition
 import com.example.coolblueassignment.presentation.ui.ProductsActivity
-import com.example.coolblueassignment.presentation.ui.adapters.ProductsAdapter
+import com.example.coolblueassignment.presentation.ui.adapters.viewholders.ProductListViewHolder
 import com.example.coolblueassignment.testutil.*
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -116,7 +116,7 @@ class SearchProductTest {
     fun navigateTroughAllProductPages() {
         val activityScenario = ActivityScenario.launch(ProductsActivity::class.java)
 
-        productListMatcher.scrollToPosition<ProductsAdapter.ProductViewHolder>(
+        productListMatcher.scrollToPosition<ProductListViewHolder>(
             SECOND_PAGE_LAST_ITEM_POSITION
         )
         productListMatcher.verifyItemAtPositionWithValue(
@@ -125,7 +125,7 @@ class SearchProductTest {
             SECOND_PAGE_LAST_MOCKED_PRODUCT_NAME,
         )
         Thread.sleep(500L)
-        productListMatcher.scrollToPosition<ProductsAdapter.ProductViewHolder>(
+        productListMatcher.scrollToPosition<ProductListViewHolder>(
             LAST_PAGE_LAST_ITEM_POSITION
         )
         productListMatcher.verifyItemAtPositionWithValue(
